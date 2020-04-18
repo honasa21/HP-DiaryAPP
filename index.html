@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+  <head>
+    <title>hondaasakoのページ</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <style>
+      #wrapper {
+
+      }
+      #header {
+        background-color: rgb(233, 183, 233);
+        padding: 25px;
+      }
+      #container {
+
+      }
+      #main {
+        background-color: springgreen;
+        float: left;
+        width: 70%;
+      }
+      #side {
+        background-color: gold;
+        float: left;
+        width: 30%;
+      }
+      #footer {
+        clear: both;
+        background-color: palevioletred;
+        padding: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="header">
+        <a href="#">トップ</a>
+        <a href="#">サービス</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+              </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+        </nav>
+        <h1>あさぴーの紹介ページへようこそ♡</h1>
+      </div>
+      <div id="container">
+        <div id="main">
+
+       {% extends 'diary/base.html' %}
+
+       {% block content %}
+       <h1>日記一覧</h1>
+       <table class="table">
+          <thead>
+              <tr>
+                    <th>タイトル</th>
+                    <th>日付</th>
+                    <th></th>
+                    <th></th>
+              </tr>
+          </thead>
+          <tbody>
+               {% for day in day_list %}
+               <tr>
+                    <td><a href="{% url 'diary:detail' day.pk %}">{{ day.title }}</a></td>
+                    <td>{{ day.date }}</td>
+                    <td><a href="{% url 'diary:update' day.pk %}">更新</a></td>
+                    <td><a href="{% url 'diary:delete' day.pk %}">削除</a></td>
+               </tr>
+               {% endfor %}
+           </tbody>
+       </table>
+       {% endblock %}
+          
+          <br>#TSfCM1期生<br>#プログラミング勉強中<br>#面白くて何かの役に立つサービスを作りたい！！<br>#<br>#<br>#<br>#<br>#<br>#<br>#　
+        </div>
+        <div id="side">
+          サイド<br>#<img src="IMG_0570.JPG" alt=""><br>#日テレの<br>#<br>#<br>#<br>#<br>#<br>#<br>#<br>#
+        </div>
+      </div>
+      <div id="footer">
+        問い合わせ
+      </div>
+    </div>
+  </body>
+</html>
